@@ -1,13 +1,16 @@
 library(targets)
 source("conf/params.R")
 source("R/functions.R")
+source("R/visualization.R")
 options(tidyverse.quiet = TRUE)
-tar_option_set(packages = c( "knitr", 
-                             "tidyverse", "Hmisc", "gdata", # Data processing. tidyverse core: "dplyr", "tidyr", "readr", "purrr", "tibble", "stringr", "forcats".
-                             "RColorBrewer", "ggplot2", "ggpubr", "cowplot", "pheatmap", "scales", # Visualization.
-                             "Rsamtools", "ATACseqQC", "ChIPseeker", "clusterProfiler", # Analysis tools.
-                             "TxDb.Hsapiens.UCSC.hg38.knownGene", "org.Hs.eg.db", "DESeq2", "gprofiler2",
-                             "biglm", "readr", "targets", "AnnotationHub", "ggrepel", "dplyr")) # Databases.
+tar_option_set(
+  packages = 
+    c("knitr", "tidyverse", "Hmisc", "gdata", 
+      # Data processing. tidyverse core: "dplyr", "tidyr", "readr", "purrr", "tibble", "stringr", "forcats".
+      "RColorBrewer", "ggplot2", "ggpubr", "cowplot", "pheatmap", "scales", # Visualization.
+      "Rsamtools", "ATACseqQC", "ChIPseeker", "clusterProfiler", # Analysis tools.
+      "TxDb.Hsapiens.UCSC.hg38.knownGene", "org.Hs.eg.db", "DESeq2", "gprofiler2",
+      "biglm", "readr", "targets", "AnnotationHub", "ggrepel", "dplyr")) # Databases.
 
 list(
   
@@ -139,16 +142,93 @@ list(
   ####################################
   ## Functional enrichment analysis ##
   ####################################
+  
   tar_target(
     fe.results.up,
-    getFEResults(de_results = sign.results %>% filter(log2FoldChange > 0) %>% na.omit() %>% filter(condition=="Lyn.KO"), direction = "UP", ordered=F, organism = "hsapiens", gene.column.name = "Symbol")
-    
+    getFEResults(
+      de_results = sign.results %>% 
+                    filter(log2FoldChange > 0) %>% 
+                      na.omit() %>% filter(condition=="Lyn.KO"), 
+      direction = "UP", 
+      ordered=F, 
+      organism = "hsapiens", 
+      gene.column.name = "Symbol")
   ),
   tar_target(
     fe.results.dn,
-    getFEResults(de_results = sign.results %>% filter(log2FoldChange < 0) %>% na.omit() %>% filter(condition=="Lyn.KO"), direction = "DOWN", ordered=F, organism = "hsapiens", gene.column.name = "Symbol")
-    
+    getFEResults(
+      de_results = sign.results %>% 
+                    filter(log2FoldChange < 0) %>% 
+                      na.omit() %>% filter(condition=="Lyn.WT"), 
+      direction = "DOWN", 
+      ordered=F, 
+      organism = "hsapiens", 
+      gene.column.name = "Symbol")
   ),
+  tar_target(
+    customDB.c2,
+    upload_GMT_file(gmtfile = "data/c2.all.v7.5.1.symbols.gmt")
+    ## Please be aware if the target up to date as the returned ID could
+    ## be obsolete after a time. If you like to run this target always, please
+    ## add the following parameter to the target.
+    #, cue = tar_cue(mode="always")
+  ),
+  tar_target(
+    c2.fe.results.up,
+    getFEResults(
+      de_results = sign.results %>% 
+        filter(log2FoldChange > 0) %>% 
+        na.omit() %>% filter(condition=="Lyn.KO"), 
+      DB=customDB.c2, 
+      direction = "UP", 
+      ordered=F, 
+      organism = "hsapiens", 
+      gene.column.name = "Symbol")
+  ),
+  tar_target(
+    c2.fe.results.dn,
+    getFEResults(
+      de_results = sign.results %>% 
+        filter(log2FoldChange < 0) %>% 
+        na.omit() %>% filter(condition=="Lyn.WT"), 
+      DB=customDB.c2, 
+      direction = "DOWN", 
+      ordered=F, 
+      organism = "hsapiens", 
+      gene.column.name = "Symbol")
+  ),
+  tar_target(
+    customDB.h,
+    upload_GMT_file(gmtfile = "data/h.all.v7.5.1.symbols.gmt")
+    ## Please be aware if the target up to date as the returned ID could
+    ## be obsolete after a time. If you like to run
+    #,cue = tar_cue(mode="always")
+  ),
+  tar_target(
+    h.fe.results.up,
+    getFEResults(
+      de_results = sign.results %>% 
+        filter(log2FoldChange > 0) %>% 
+        na.omit() %>% filter(condition=="Lyn.KO"), 
+      DB=customDB.h, 
+      direction = "UP", 
+      ordered=F, 
+      organism = "hsapiens", 
+      gene.column.name = "Symbol")
+  ),
+  tar_target(
+    h.fe.results.dn,
+    getFEResults(
+      de_results = sign.results %>% 
+        filter(log2FoldChange < 0) %>% 
+        na.omit() %>% filter(condition=="Lyn.WT"), 
+      DB=customDB.h, 
+      direction = "DOWN", 
+      ordered=F, 
+      organism = "hsapiens", 
+      gene.column.name = "Symbol")
+  ),
+  
   #####################
   ## Quality Control ##
   #####################
@@ -210,6 +290,10 @@ list(
                  ylim=c(0, 20), xlim=c(-5,5), title="Transcript Level", 
                  title.color = "darkred")
     ),
+  
+  #################
+  ##    Heatmap  ##
+  #################
   tar_target(
     HM_padj,
     plot_hm(counts=peaksCountsDF.reduced, 
@@ -225,7 +309,57 @@ list(
             colData = colData,
             annotated.peaks.df = processedAnnotatedPeaks,
             order.by = "log2FoldChange")
+  ),
+  
+  tar_target(
+    TowerPlot_25,
+    TowerPlot(deg_data = DEA,
+              dap_data = results, 
+              move.gene.name.down = 1.3,
+              only.significant.peaks = F, 
+              top_n=25,
+              point.shape=23, ylim=c(-6,8), 
+              min.point.size = .1, 
+              max.point.size = 12,
+              color.gene.name = "black", 
+              roi=c("Promoter"),
+              color.region.of.interest = "yellow", 
+              stack.inc=.3,
+              color.border.sign.peaks = "black", 
+              stroke.high = .5, 
+              stroke.std = 0.5,
+              color.border.unsign.peaks = "lightgrey", 
+              #title="Differential accessibility of Peaks in top 25 UP- and top 25 DOWN-regulated genes",
+              theme=theme_cowplot(), 
+              return="plot")
+  ),
+  
+  
+  ### Integration
+  
+  ## Transcriptomics
+  tar_target(DEA_file, transcriptomics_dea, format = "file"),
+  
+  tar_target(
+    DEA,
+    read.table(file=DEA_file, sep="\t", header=T)  %>% 
+    rename(Symbol=SYMBOL, 
+           Description=GENENAME, 
+           log2FoldChange=logFC, 
+           pvalue=P.Value, 
+           padj=qval)
+  ),
+  
+  ## Proteomics
+  tar_target(PDEA_file, proteomics_dea, format = "file"),
+  
+  tar_target(
+    PDEA,
+    read.table(PDEA_file, header=T) %>% 
+      rename(Symbol=SYMBOL, log2FoldChange=logFC, pvalue=p.val, padj=p.adj)
+    
   )
+  
 )
 
 
