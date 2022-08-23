@@ -40,7 +40,7 @@ list(
   ),
   tar_target(
     annotatedPeaks,
-      annotatePeak(peak = peakGRanges, tssRegion = c(-3000, 3000),
+      ChIPseeker::annotatePeak(peak = peakGRanges, tssRegion = c(-3000, 3000),
                    TxDb = ensDB,
                    level = "transcript",
                    assignGenomicAnnotation = TRUE,
