@@ -121,7 +121,7 @@ TowerPlot <- function(deg_data, dap_data, annotation.name="annotation", region.n
 }
 
 
-correlation_plot <- function(DAA, DEA, DAA.name="ATAC-Seq", DEA.name="Transcriptome"){
+correlation_plot <- function(DAA, DEA, DAA.name="ATAC-Seq", DEA.name="Transcriptome", lfc1=0, padj1=1, lfc2=0, padj2=1, es.cut=.56, include.symbols=F){
   ## Data
   Table1 <- na.omit(DAA)
   Table1 <- Table1 %>%
@@ -146,12 +146,11 @@ correlation_plot <- function(DAA, DEA, DAA.name="ATAC-Seq", DEA.name="Transcript
   SV <- c("Symbol")
   
   ## Logic
-  cut_lfc_1 <- 0
-  cut_padj_1 <- 1
-  cut_lfc_2 <- 0
-  cut_padj_2 <- 1
-  cut <- .56
-  include.background <- F
+  cut_lfc_1 <- lfc1
+  cut_padj_1 <- padj1
+  cut_lfc_2 <- lfc2
+  cut_padj_2 <- padj2
+  cut <- es.cut
   
   ## UI
   
@@ -191,35 +190,13 @@ correlation_plot <- function(DAA, DEA, DAA.name="ATAC-Seq", DEA.name="Transcript
   Table2 <- Table2[abs(Table2[,ES2]) >= cut_lfc_2 & Table2[,PV2] <= cut_padj_2,]
   Table1 <- Table1[, c(SV, colnames(Table1)[ES1], colnames(Table1)[PV1])]
   Table2 <- Table2[, c(SV, colnames(Table2)[ES2], colnames(Table2)[PV2])]
-  
-  if(include.background){
-    Background.Table1 <- DEG.ext[[2]]
-    Background.Table2 <- DEG.ox.ext[[2]]
-    colnames(Background.Table1)[1:8] <- paste("first.bg.",  colnames(Background.Table1)[1:8] , sep="") 
-    colnames(Background.Table1)[1] <- gsub(pattern = "first.bg.", replacement = "", x = colnames(Background.Table1)[1])
-    colnames(Background.Table1)[8] <- gsub(pattern = "first.bg.", replacement = "", x = colnames(Background.Table1)[8])
-    colnames(Background.Table2)[1:8] <- paste("second.bg.",  colnames(Background.Table2)[1:8] , sep="") 
-    colnames(Background.Table2)[1] <- gsub(pattern = "second.bg.", replacement = "", x = colnames(Background.Table2)[1])
-    colnames(Background.Table2)[8] <- gsub(pattern = "second.bg.", replacement = "", x = colnames(Background.Table2)[8])
-    BES1 <- 3
-    BES2 <- 3
-    BPV1 <- 7
-    BPV2 <- 7
-    Background.Table1 <- Background.Table1[abs(Background.Table1[, BES1]) >= cut & Background.Table1[, BPV1] <= cut_padj_1, ]
-    Background.Table2 <- Background.Table2[abs(Background.Table2[, BES2]) >= cut & Background.Table2[, BPV2] <= cut_padj_2, ]
-    Background.Table1 <- Background.Table1[, c(SV, colnames(Background.Table1)[BES1], colnames(Background.Table1)[BPV1])]
-    Background.Table2 <- Background.Table2[, c(SV, colnames(Background.Table2)[BES2], colnames(Background.Table2)[BPV2])]
-  }
+
   ES1 <- 3
   PV1 <- 4
   ES2 <- 3
   PV2 <- 4
   combined <- merge(Table1, Table2, by=SV)
-  
-  if(include.background){
-    combined <- merge(combined, Background.Table1, by=SV)
-    combined <- merge(combined, Background.Table2, by=SV)
-  }
+
   
   #combined[combined$first.log2FoldChange  0 & combined$first.bg.log2FoldChange > 0 & (combined$second.log2FoldChange < 0 & combined$second.bg.log2FoldChange > 0), ]
   
@@ -235,10 +212,10 @@ correlation_plot <- function(DAA, DEA, DAA.name="ATAC-Seq", DEA.name="Transcript
   combined$up.dn <- ifelse((combined[,ES1]) >= cut & (combined[,ES2]) <= -cut, T, F)
   combined$dn.up <- ifelse((combined[,ES1]) <= -cut & (combined[,ES2]) >= cut, T, F)
   
-  combined$up.ns <- ifelse((combined[,ES1]) >= cut & ((combined[,ES2]) >= -cut &(combined[,ES2]) <= cut), T, F)
-  combined$ns.up <- ifelse(((combined[,ES1]) >= -cut &(combined[,ES1]) <= cut) & (combined[,ES2]) >= cut, T, F)
-  combined$dn.ns <- ifelse((combined[,ES1]) <= -cut & ((combined[,ES2]) >= -cut &(combined[,ES2]) <= cut), T, F)
-  combined$ns.dn <- ifelse(((combined[,ES1]) >= -cut &(combined[,ES1]) <= cut) & (combined[,ES2]) <= -cut, T, F)
+  combined$up.ns <- ifelse(( combined[,ES1]) >=  cut & ((combined[,ES2]) >= -cut & (combined[,ES2]) <= cut), T, F)
+  combined$ns.up <- ifelse(((combined[,ES1]) >= -cut & ( combined[,ES1]) <=  cut) & (combined[,ES2]) >= cut, T, F)
+  combined$dn.ns <- ifelse(( combined[,ES1]) <= -cut & ((combined[,ES2]) >= -cut & (combined[,ES2]) <= cut), T, F)
+  combined$ns.dn <- ifelse(((combined[,ES1]) >= -cut & ( combined[,ES1]) <=  cut) & (combined[,ES2]) <= -cut, T, F)
   
   nr.up.up <- nrow(combined[combined$up.up,])
   nr.dn.dn <- nrow(combined[combined$dn.dn,])
@@ -275,13 +252,21 @@ correlation_plot <- function(DAA, DEA, DAA.name="ATAC-Seq", DEA.name="Transcript
   merge(combined, tar_read(PDEA), by="Symbol")
   
   ## Main plot
-  p <- ggplot(combined, aes(x=first.log2FoldChange, y=second.log2FoldChange, fill=Relation)) + 
-    geom_point(size=pt.size, shape = pt.shape, color = pt.border.color) + theme_classic() + 
-    scale_fill_manual(values = named.color.vector) + 
-    geom_hline(yintercept = cut, linetype=linetype) + geom_hline(yintercept = -cut, linetype=linetype) + 
-    geom_vline(xintercept = cut, linetype=linetype) + geom_vline(xintercept = -cut, linetype=linetype) +
-    xlab(xlab) + ylab(ylab)
-  
+  if(include.symbols){
+    p <- ggplot(combined, aes(x=first.log2FoldChange, y=second.log2FoldChange, fill=Relation, label=Symbol)) + 
+    geom_point(size=pt.size, shape = pt.shape, color = pt.border.color) + geom_text_repel(max.overlaps = 20, text.size = 3, pt.border.color = "lightgrey", max.overlap = 200000, force = 0.25, force_pull = 3, min.segment.length = 0.1, segment.linetype = "dotted", segment.alpha = 1, segment.ncp = 3, segment.color = "white") + theme_classic() + 
+      scale_fill_manual(values = named.color.vector) + 
+      geom_hline(yintercept = cut, linetype=linetype) + geom_hline(yintercept = -cut, linetype=linetype) + 
+      geom_vline(xintercept = cut, linetype=linetype) + geom_vline(xintercept = -cut, linetype=linetype) +
+      xlab(xlab) + ylab(ylab)
+  }else{
+    p <- ggplot(combined, aes(x=first.log2FoldChange, y=second.log2FoldChange, fill=Relation)) + 
+      geom_point(size=pt.size, shape = pt.shape, color = pt.border.color) + theme_classic() + 
+      scale_fill_manual(values = named.color.vector) + 
+      geom_hline(yintercept = cut, linetype=linetype) + geom_hline(yintercept = -cut, linetype=linetype) + 
+      geom_vline(xintercept = cut, linetype=linetype) + geom_vline(xintercept = -cut, linetype=linetype) +
+      xlab(xlab) + ylab(ylab)
+  }
   
   
   tp <- ggplot(combined, aes(x=first.log2FoldChange)) + 
