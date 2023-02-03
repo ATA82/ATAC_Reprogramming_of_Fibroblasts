@@ -13,24 +13,23 @@ The following was tested on Ubuntu 20.04. We will need an R version 4.1.2, Bioco
 3. We will install R through conda-forge and not through the default channel, so we need to set its priority over the default channel.
 
      `conda config --set channel_priority strict` 
+   NOTE: You can undo this change by setting strict priority to the default channel as described here.
 
-NOTE: You can undo this change by setting strict priority to the default channel as described here.
+4. Check whether an updated R version is added in the conda search space or not.
 
-Check whether an updated R version is added in the conda search space or not.
+    `conda search r-base`
 
-    conda search r-base
+5. Now, it is always a good practice (recommoned here) to create a new conda environment, which will help to debug the package-specific and compatibility issues without disrupting the base environment.
 
-Now, it is always a good practice (recommoned here) to create a new conda environment, which will help to debug the package-specific and compatibility issues without disrupting the base environment.
+    `conda create -n atac_lyn_in_fibroblasts_promotes_leukemia python=3.8`
 
-    conda create -n atac_lyn_in_fibroblasts_promotes_leukemia python=3.8
+6. Let's activate the newly create conda environment.
 
-Let's activate the newly create conda environment.
+    `conda activate atac_lyn_in_fibroblasts_promotes_leukemia`
 
-    conda activate atac_lyn_in_fibroblasts_promotes_leukemia
+7. And finally install the R package.
 
-And finally install the R package.
-
-    conda install -c conda-forge r-base=4.1.2
+    `conda install -c conda-forge r-base=4.1.2`
 
 
 ## General
