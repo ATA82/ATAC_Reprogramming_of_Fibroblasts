@@ -1,6 +1,6 @@
 # ATAC-Seq analysis related to the paper: "Lyn in fibroblasts promotes leukemia"
 
-### General
+## General
 
 ## Description of used data
 
