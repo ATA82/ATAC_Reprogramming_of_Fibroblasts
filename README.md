@@ -7,12 +7,12 @@
 ### Raw data
 6 ATAC-Seq libraries generated from samples extracted from HS-5 LYNWT and LYNKO cells cultured under normal growth conditions:
 
-KO_R1: LYN KO cells from human HS-5 cell line.
-KO_R2: LYN KO cells from human HS-5 cell line.
-KO_R3: LYN KO cells from human HS-5 cell line.
-WT_R1: LYN WT cells from human HS-5 cell line.
-WT_R2: LYN WT cells from human HS-5 cell line.
-WT_R3: LYN WT cells from human HS-5 cell line.
+- **KO_R1:** LYN KO cells from human HS-5 cell line.
+- **KO_R2: LYN KO cells from human HS-5 cell line.
+- **KO_R3: LYN KO cells from human HS-5 cell line.
+- **WT_R1: LYN WT cells from human HS-5 cell line.
+- **WT_R2:** LYN WT cells from human HS-5 cell line.
+- **WT_R3:** LYN WT cells from human HS-5 cell line.
 
 ## Method description
 
