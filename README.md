@@ -1,38 +1,8 @@
 # ATAC-Seq analysis related to the paper: "Lyn in fibroblasts promotes leukemia"
 
-## Requirements
-The following was tested on Ubuntu 20.04. We will need an R version 4.1.2, Bioconductor package 3.16 and RStudio 
-1. Install conda (For more information see: https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html): 
-    
-    `bash Miniconda3-py38_22.11.1-1-Linux-x86_64.sh`
-    
-3. An updated R version (>=4.0) is available through the conda-forge channel, so first add the channel using
-
-    `conda config --add channels conda-forge`
-
-3. We will install R through conda-forge and not through the default channel, so we need to set its priority over the default channel.
-
-     `conda config --set channel_priority strict` 
-   NOTE: You can undo this change by setting strict priority to the default channel as described here.
-
-4. Check whether an updated R version is added in the conda search space or not.
-
-    `conda search r-base`
-
-5. Now, it is always a good practice (recommoned here) to create a new conda environment, which will help to debug the package-specific and compatibility issues without disrupting the base environment.
-
-    `conda create -n atac_lyn_in_fibroblasts_promotes_leukemia python=3.8`
-
-6. Let's activate the newly create conda environment.
-
-    `conda activate atac_lyn_in_fibroblasts_promotes_leukemia`
-
-7. And finally install the R package.
-
-    `conda install -c conda-forge r-base=4.1.2`
-
-
 ## General
+
+
 ## Description of used data
 
 ## Method description
@@ -99,7 +69,44 @@ corresponding adjusted p-values for each motif.
 ### Footprinting analysis
 
 
-## Usage
+## Running the analysis
+
+### Installing the environment.
+The following was tested on Ubuntu 20.04. We will need an R version 4.1.2, Bioconductor package 3.16 and RStudio 
+1. Install conda (For more information see: https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html): 
+    
+    `bash Miniconda3-py38_22.11.1-1-Linux-x86_64.sh`
+    
+3. An updated R version (>=4.0) is available through the conda-forge channel, so first add the channel using
+
+    `conda config --add channels conda-forge`
+
+3. We will install R through conda-forge and not through the default channel, so we need to set its priority over the default channel.
+
+     `conda config --set channel_priority strict` 
+   NOTE: You can undo this change by setting strict priority to the default channel as described here.
+
+4. Check whether an updated R version is added in the conda search space or not.
+
+    `conda search r-base`
+
+5. Now, it is always a good practice (recommoned here) to create a new conda environment, which will help to debug the package-specific and compatibility issues without disrupting the base environment.
+
+    `conda create -n atac_lyn_in_fibroblasts_promotes_leukemia python=3.8`
+
+6. Let's activate the newly create conda environment.
+
+    `conda activate atac_lyn_in_fibroblasts_promotes_leukemia`
+
+7. And finally install the R package.
+
+    `conda install -c conda-forge r-base=4.1.2`
+
+### Install the repository
 
 
-## Environment
+### Run the analysis
+
+
+
+## Cite the paper
