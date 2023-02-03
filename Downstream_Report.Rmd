@@ -682,16 +682,11 @@ DT::datatable(ft_statsitics_df[,1:13], rownames = FALSE, filter = 'top',
 
 <h5>One-sided Volcano of enriched motifs</h5>
 
-
 A = number of input regions with at least 1 occurrence of that particular transcription factor.
-
 B = number of input regions with no occurrence of that particular transcription factor.
-
 C = number of random background regions with at least 1 occurrence of that particular transcription factor.
-
 D = number of random background regions with no occurrence of that particular transcription factor.
-Here: foreground frequency ist (A/(A+B)), background frequency is (C/(C+D)),
-where:
+Here: foreground frequency ist (A/(A+B)), background frequency is (C/(C+D))
 
 ```{r fig.width=10, fig.height=7, echo=F, warning=F}
 vpmp_table <- 
