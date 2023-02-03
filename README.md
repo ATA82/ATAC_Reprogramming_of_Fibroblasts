@@ -1,7 +1,39 @@
 # ATAC-Seq analysis related to the paper: "Lyn in fibroblasts promotes leukemia"
 
-## General
+## Requirements
+The following e will need an R version 4.1.2, Bioconductor package 3.16 and RStudio 
+Install Miniconda 
+The following was tested on Ubuntu 20.04:
+bash Miniconda3-py38_22.11.1-1-Linux-x86_64.sh
 
+An updated R version (>=4.0) is available through the conda-forge channel, so first add the channel.
+
+conda config --add channels conda-forge
+
+We are going to install R through conda-forge and not through the default channel, so we need to set its priority over the default channel.
+
+conda config --set channel_priority strict
+
+NOTE: You can undo this change by setting strict priority to the default channel as described here.
+
+Check whether an updated R version is added in the conda search space or not.
+
+conda search r-base
+
+Now, it is always a good practice (recommoned here) to create a new conda environment, which will help to debug the package-specific and compatibility issues without disrupting the base environment.
+
+conda create -n seurat4 python=3.6
+
+Let's activate the newly create conda environment.
+
+conda activate seurat4
+
+And finally install the R package.
+
+conda install -c conda-forge r-base
+
+
+## General
 ## Description of used data
 
 ## Method description
