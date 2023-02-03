@@ -7,8 +7,7 @@
 
 ## Method description
 
-ATAC-sequencing
-Experimental procedures: HS-5 LYNWT and LYNKO cells were cultured under normal
+**ATAC-sequencing Experimental procedures:** HS-5 LYNWT and LYNKO cells were cultured under normal
 growth conditions. Cells were used to perform tagmentation and preparations for
 ATAC-sequencing according to the manufacturer’s instructions of the used ATAC-kit
 (Active Motif). DNA was isolated respectively and processed and sequenced with 50M
