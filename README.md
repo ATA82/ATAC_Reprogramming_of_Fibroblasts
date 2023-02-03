@@ -102,10 +102,10 @@ The following was tested on Ubuntu 20.04. We will need an R version 4.1.2, Bioco
 
     `conda install -c conda-forge r-base=4.1.2`
 
-### Install the repository
+### Installing the github repository
 
 
-### Run the analysis
+### Running the analysis
 
 
 
