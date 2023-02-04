@@ -26,6 +26,7 @@ The outline of the description is as follows:
 - **WT_R1:** LYN WT cells from human HS-5 cell line.
 - **WT_R2:** LYN WT cells from human HS-5 cell line.
 - **WT_R3:** LYN WT cells from human HS-5 cell line.
+
 The raw data are stored in the functional genomics data collection (ArrayExpress) with following accession number [E-MTAB-12531](https://www.ebi.ac.uk/biostudies/arrayexpress/studies/E-MTAB-12531#) and could be directly downloaded from the [samples and data section](https://www.ebi.ac.uk/biostudies/arrayexpress/studies/E-MTAB-12531/sdrf) 
 
 ### Processed data
