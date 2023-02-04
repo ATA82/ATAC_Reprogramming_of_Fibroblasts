@@ -26,7 +26,11 @@ The outline of the description is as follows:
 - **WT_R3:** LYN WT cells from human HS-5 cell line.
 
 ### Processed data
-
+- **Peaks**
+- **Annotated peaks**
+- **Differential accessibility table**
+- **Motif table**
+- **Footprinting table**
 
 ## Method description
 
