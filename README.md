@@ -8,11 +8,11 @@ Reproducibility of data analysis in scientific research is important because it 
 
 The outline of the description is as follows:
 - [Introduction](#introduction)
-- Description of used data
-- Method description
-- Running the analysis
-- References
-- Citation
+- [Description of used data](#description-of-used-data)
+- [Method description](#method-description)
+- [Running the analysis](#running-the-analysis)
+- [References](#references)
+- [Citation](#citation)
 
 ## Description of used data
 
@@ -129,6 +129,6 @@ The following was tested on Ubuntu 20.04. We will need an R version 4.1.2, Bioco
 
 ### Running the analysis
 
+## References
 
-
-## Cite the paper
+## Citation
