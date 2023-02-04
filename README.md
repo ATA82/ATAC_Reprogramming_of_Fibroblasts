@@ -7,7 +7,7 @@ This is a repository of the code related to the analysis of the ATAC-Seq dataset
 Reproducibility of data analysis in scientific research is important because it helps ensure the validity and reliability of the results, as well as promoting transparency and trust in the scientific community. When others are able to reproduce the same findings using the same methods and data, it provides evidence that the results are robust and not due to chance or error. This also allows for further investigation and improvement of the study, leading to the advancement of knowledge and the discovery of new insights. Therefore, this README is a description of data used in the analysis and the method used to analyze the data as well as the steps needed to reproduce the same results.
 
 The outline of the description is as follows:
-- Introduction
+- [Introduction](#introduction)
 - Description of used data
 - Method description
 - Running the analysis
