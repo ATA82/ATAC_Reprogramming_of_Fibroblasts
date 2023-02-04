@@ -2,7 +2,7 @@
 
 ## General
 This is a repository of the code related to the analysis of the ATAC-Seq dataset from the publication: "Alexander F. vom Stein, Rocio Rebollido-Rios, Anna Lukas, Maximilian Koch, Anton von Lom, Sebastian Reinartz, Daniel Bachurski, France Rose, Katarzyna Bozek, Ali T. Abdallah, Viktoria Kohlhas, Julia Saggau, Rebekka Zölzer, Yue Zhao, Christiane Bruns, Paul J. Bröckelmann, Philipp Lohneis, Reinhard Büttner, Björn
-Häupl, Thomas Oellerich, Phuong-Hien Nguyen, and Michael Hallek. **LYN kinase programs stromal fibroblasts to facilitate leukemic survival via regulation of c-JUN and THBS1**. __Nature Communication__. 2023.
+Häupl, Thomas Oellerich, Phuong-Hien Nguyen, and Michael Hallek. **LYN kinase programs stromal fibroblasts to facilitate leukemic survival via regulation of c-JUN and THBS1**. _Nature Communication_. 2023.
 This Readme is a description of data used in the analysis and the method used to analyze the data as well as the steps needed to reproduce the same results. 
 
 ## Description of used data
