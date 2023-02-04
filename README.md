@@ -1,5 +1,7 @@
 # ATAC-Seq analysis related to the paper: "Lyn in fibroblasts promotes leukemia"
 
+**Author:** Ali T. Abdallah
+
 ## Introduction
 This is a repository of the code related to the analysis of the ATAC-Seq dataset from the publication: 
 "Alexander F. vom Stein, Rocio Rebollido-Rios, Anna Lukas, Maximilian Koch, Anton von Lom, Sebastian Reinartz, Daniel Bachurski, France Rose, Katarzyna Bozek, **Ali T. Abdallah**, Viktoria Kohlhas, Julia Saggau, Rebekka Zölzer, Yue Zhao, Christiane Bruns, Paul J. Bröckelmann, Philipp Lohneis, Reinhard Büttner, Björn Häupl, Thomas Oellerich, Phuong-Hien Nguyen, and Michael Hallek. **LYN kinase programs stromal fibroblasts to facilitate leukemic survival via regulation of c-JUN and THBS1**. _Nature Communications_. 2023".
