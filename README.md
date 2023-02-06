@@ -108,8 +108,8 @@ corresponding adjusted p-values for each motif.
 If you do not have docker installed on your host system install it first see: https://docs.docker.com/get-docker/,
 if you are going to remote into the host running the RStudio server instance in docker only the remote host and not
 your ssh client needs to have docker installed.
-
-- Run the nf-core pipeline on our raw data (See accession number of our experiment above)
+- Download raw data (fastq files) from the above mentioned repository ([E-MTAB-12531](https://www.ebi.ac.uk/biostudies/arrayexpress/studies/E-MTAB-12531/sdrf) )
+- Run the nf-core pipeline using the start_ on our raw data (See accession number of our experiment above)
 - Clone this repo to your project directory:
   `git clone git@github.com:ATA82/ATAC_Reprogrammin_of_Fibroblasts.git`
 - Create a file in this directory called `.env` which contains `USERNAME=<your username on your host system>`
