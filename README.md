@@ -109,9 +109,9 @@ If you do not have docker installed on your host system install it first see: ht
 if you are going to remote into the host running the RStudio server instance in docker only the remote host and not
 your ssh client needs to have docker installed.
 
-- Run the nf-core pipeline on your raw data
+- Run the nf-core pipeline on our raw data (See accession number of our experiment above)
 - Clone this repo to your project directory:
-  `git clone git@github.com:CECADBioinformaticsCoreFacility/RNA-seq_project_template.git`
+  `git clone git@github.com:ATA82/ATAC_Reprogrammin_of_Fibroblasts.git`
 - Create a file in this directory called `.env` which contains `USERNAME=<your username on your host system>`
 - Customise the docker-compose.yml file to set the:
 	- project/container name - set this to a name for the project to make a new container for the 
