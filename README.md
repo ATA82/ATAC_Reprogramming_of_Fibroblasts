@@ -101,41 +101,48 @@ corresponding adjusted p-values for each motif.
 ### Footprinting analysis
 
 
-## Running the analysis
+## Reproduce the results
 
-### Installing the environment.
-The following was tested on Ubuntu 20.04. We will need an R version 4.1.2, Bioconductor package 3.16 and RStudio 
-1. Install conda (For more information see: https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html): 
-    
-    `bash Miniconda3-py38_22.11.1-1-Linux-x86_64.sh`
-    
-3. An updated R version (>=4.0) is available through the conda-forge channel, so first add the channel using
+### Getting started
 
-    `conda config --add channels conda-forge`
+If you do not have docker installed on your host system install it first see: https://docs.docker.com/get-docker/,
+if you are going to remote into the host running the RStudio server instance in docker only the remote host and not
+your ssh client needs to have docker installed.
 
-3. We will install R through conda-forge and not through the default channel, so we need to set its priority over the default channel.
+- Run the nf-core pipeline on your raw data
+- Clone this repo to your project directory:
+  `git clone git@github.com:CECADBioinformaticsCoreFacility/RNA-seq_project_template.git`
+- Create a file in this directory called `.env` which contains `USERNAME=<your username on your host system>`
+- Customise the docker-compose.yml file to set the:
+	- project/container name - set this to a name for the project to make a new container for the 
+                                   project and to make it easier to identify your containers in e.g. `docker ps`
+	- project directory - set this to the path on your host system where you have just cloned this repo
+	  It is important that you create this directory prior to starting the container as if the project
+	  path does not exist it will be owned by the root user by default which will cause permissions issues
+	- port - setting a unique port for the container makes it easier to have multiple projects up on 
+		 your host at the same time as they will not clash
+  There are additional comments in `docker-compose.yml` to aid in setting it up
+- You can now start your container with `docker-compose up -d`, `-d` is for detach so the container 
+  will now run in the background and will even resume following a reboot.
+  to stop session use `docker-compose down`, add the `--build` flag when starting if you want to 
+  trigger a re-build of the container image.
+- Connect to your RStudio server session at: localhost:port or 0.0.0.0:port, 
+  where port is the port you set in `docker-compose.yml`, in this example it is 4415
+  The default user and password are 'rstudio' & '1rstudio' respectively, these are set in `rstudio_docker/rstudio.env`
+  note that you can connect to an RStudio server instance running on a remote system to which you have 
+  access over ssh by using ssh port forwarding.
+  You can forward a port over ssh with a command of the form: `ssh -nNT -L <local port>:<host>:<remote port> <host>`
+  e.g. `ssh -nNT -L 4415:ark.cecad.uni-koeln.de:4415 richardjacton@ark.cecad.uni-koeln.de`
+  you should now be able to access the RStudio server instance at localhost of the ssh client in a web browser.
+  (Tip: If working with multiple RStudio containers I sometimes have issues logging into different sessions at the
+  same time opening different sessions using Firefox container tabs fixes this issue)
+- Create a new R project in your project directory
+- Use `renv::restore()` to load the appropriate versions of the R package dependencies from the renv lockfile 
+  (This may happed automaticlly when you initiate your project)
+- Copy the output directory of the nf-core RNA-seq pipeline into a folder named `results_RNA-seq` within your project directory
+- load the {targets} R package `library(targets)` and run the targets pipeline with `tar_make()`
 
-     `conda config --set channel_priority strict` 
-   NOTE: You can undo this change by setting strict priority to the default channel as described here.
-
-4. Check whether an updated R version is added in the conda search space or not.
-
-    `conda search r-base`
-
-5. Now, it is always a good practice (recommoned here) to create a new conda environment, which will help to debug the package-specific and compatibility issues without disrupting the base environment.
-
-    `conda create -n atac_lyn_in_fibroblasts_promotes_leukemia python=3.8`
-
-6. Let's activate the newly create conda environment.
-
-    `conda activate atac_lyn_in_fibroblasts_promotes_leukemia`
-
-7. And finally install the R package.
-
-    `conda install -c conda-forge r-base=4.1.2`
-
-### Installing the github repository
-
+Customisations can be made within the `_targets.R` file and the R functions files located in `R/`
 
 ### Running the analysis
 
