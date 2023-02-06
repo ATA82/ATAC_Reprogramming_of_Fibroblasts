@@ -121,30 +121,30 @@ your ssh client needs to have docker installed.
 	  path does not exist it will be owned by the root user by default which will cause permissions issues
 	- port - setting a unique port for the container makes it easier to have multiple projects up on 
 		 your host at the same time as they will not clash
+	- map the cache of renv on the host system to the container. If you don't have a cache you could just select a directory on the host system where the user of rstudio have access to, such as the one used in the docker-compose.yml file. The advantage of selecting an existing cache is given in case you already have most of the package versions on your system.
   There are additional comments in `docker-compose.yml` to aid in setting it up
-- You can now start your container with `docker-compose up -d`, `-d` is for detach so the container 
+
+
+### Running the analysis
+- Start your container with `docker compose up -d`, `-d` is for detach so the container 
   will now run in the background and will even resume following a reboot.
-  to stop session use `docker-compose down`, add the `--build` flag when starting if you want to 
+  to stop session use `docker compose down`, add the `--build` flag when starting if you want to 
   trigger a re-build of the container image.
 - Connect to your RStudio server session at: localhost:port or 0.0.0.0:port, 
-  where port is the port you set in `docker-compose.yml`, in this example it is 4415
+  where port is the port you set in `docker-compose.yml`, in this example it is 4444
   The default user and password are 'rstudio' & '1rstudio' respectively, these are set in `rstudio_docker/rstudio.env`
   note that you can connect to an RStudio server instance running on a remote system to which you have 
   access over ssh by using ssh port forwarding.
   You can forward a port over ssh with a command of the form: `ssh -nNT -L <local port>:<host>:<remote port> <host>`
-  e.g. `ssh -nNT -L 4415:ark.cecad.uni-koeln.de:4415 richardjacton@ark.cecad.uni-koeln.de`
+  e.g. `ssh -nNT -L 4444:abdallah.cecad.uni-koeln.de:4444 aabdallah@aabdallah.cecad.uni-koeln.de`
   you should now be able to access the RStudio server instance at localhost of the ssh client in a web browser.
-  (Tip: If working with multiple RStudio containers I sometimes have issues logging into different sessions at the
+  (Tip: If working with multiple RStudio containers we may sometimes have issues logging into different sessions at the
   same time opening different sessions using Firefox container tabs fixes this issue)
-- Create a new R project in your project directory
 - Use `renv::restore()` to load the appropriate versions of the R package dependencies from the renv lockfile 
-  (This may happed automaticlly when you initiate your project)
-- Copy the output directory of the nf-core RNA-seq pipeline into a folder named `results_RNA-seq` within your project directory
 - load the {targets} R package `library(targets)` and run the targets pipeline with `tar_make()`
+- After all target objects are created you could switch to R Notebook within the project and Run all chunks.
 
 Customisations can be made within the `_targets.R` file and the R functions files located in `R/`
-
-### Running the analysis
 
 ## References
 
