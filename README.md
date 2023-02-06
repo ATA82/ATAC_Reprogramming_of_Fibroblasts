@@ -10,7 +10,7 @@ This is a repository of the code related to the analysis of the ATAC-Seq dataset
 
 Therefore, this README is a description of (1) data used in the analysis, (2) the method used to analyze the data (3) as well as the steps needed to reproduce the same results.
 
-The outline of the description is as follows:
+In the following the outline of the description:
 - [Introduction](#introduction)
 - [Description of used data](#description-of-used-data)
 - [Method description](#method-description)
