@@ -86,21 +86,6 @@ footprinting procedure to generate tracks as well as lists of motif-predicted bi
 differential footprinting command of RGT to generate differential activity scores and
 corresponding adjusted p-values for each motif. 
 
-### QC
-
-
-### Peak Annotation
-
-
-### Differential accessbility analysis
-
-
-### Motif enrichment analysis
-
-
-### Footprinting analysis
-
-
 ## Reproduce the results
 
 ### Getting started
