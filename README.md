@@ -1,4 +1,4 @@
-# ATAC-Seq analysis related to the paper: "Lyn in fibroblasts promotes leukemia"
+# ATAC-Seq analysis related to the paper: "Lyn in fibroblasts promotes leukemia" (running title)
 
 **Author:** Ali T. Abdallah
 
