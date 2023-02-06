@@ -1,8 +1,8 @@
 # ATAC-Seq analysis related to the paper: "Lyn in fibroblasts promotes leukemia" (running title)
 
 **Authors:** 
- - *Data analysis and management*: Ali T. Abdallah
- - *Experiment performer*: Alexander F. vom Stein
+ - **Ali T. Abdallah**: Implementation and Data analysis and management. 
+ - **Alexander F. vom Stein**: Experiment performer.
 
 ## Introduction
 This is a repository of the code related to the analysis of the ATAC-Seq dataset from the publication: 
