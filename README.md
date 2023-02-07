@@ -34,11 +34,11 @@ In the following the outline of the description:
 The raw data are stored in the functional genomics data collection (ArrayExpress) with following accession number [E-MTAB-12531](https://www.ebi.ac.uk/biostudies/arrayexpress/studies/E-MTAB-12531#) and could be directly downloaded from the [samples and data section](https://www.ebi.ac.uk/biostudies/arrayexpress/studies/E-MTAB-12531/sdrf) 
 
 ### Processed data
-- **Peaks**
-- **Annotated peaks**
-- **Differential accessibility table**
-- **Motif table**
-- **Footprinting table**
+- **Consensus Peaks**: These are the consensus peaks called by the nf-core pipeline. 
+- **Annotated peaks**: These are the annotated peak using the targets pipeline.
+- **Differential accessibility table**: This the list of differentially accessbility peaks.
+- **Motif table**: This is the list of motifs generates using RGT toolbox.
+- **Footprinting table**: This is the lisf of footprints detected by the ATAC-HINT method in the RGT toolbox.
 
 ## Method description
 
