@@ -14,7 +14,7 @@ This is a repository of the code and processed data related to the analysis of t
 If you follow the steps described in this README you should be able to reproduce the results in the Paper.
 
 ### Outline
-This README is a description of (1) data used in the analysis, (2) the method used to analyze the data (3) as well as the steps needed to reproduce the same results.
+This README is a description of (1) data used in the analysis, (2) the method used to analyze the data as well as (3) the steps needed to reproduce the same results.
 
 In the following the outline of the description:
 - [Introduction](#introduction)
