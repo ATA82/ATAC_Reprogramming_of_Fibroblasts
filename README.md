@@ -11,6 +11,8 @@ This is a repository of the code and processed data related to the analysis of t
 ### About reproducibility
 *Reproducibility* of data analysis is an important quality metric of scientific research, because it helps ensure the validity and reliability of the results, as well as promoting transparency and trust in the scientific community. When others are able to reproduce the same findings using the same methods and data, it provides evidence that the results are robust and not due to chance or error. This also allows for further investigation and improvement of the study, leading to the advancement of knowledge and the discovery of new insights (See the wiki article on [reproducbility](https://en.wikipedia.org/wiki/Reproducibility) for more details). 
 
+If you follow the steps described in this README you should be able to reproduce the results in the Paper.
+
 ### Outline
 This README is a description of (1) data used in the analysis, (2) the method used to analyze the data (3) as well as the steps needed to reproduce the same results.
 
