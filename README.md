@@ -58,7 +58,7 @@ The raw data are stored in the functional genomics data collection (ArrayExpress
 If you do not have docker installed on your host system, install it first see: <https://docs.docker.com/get-docker/>, if you are going to remote into the host running the RStudio server instance in docker, only the remote host and not your ssh client needs to have docker installed.
 
 -   Download raw data (fastq files) from the above-mentioned repository ([E-MTAB-12531](https://www.ebi.ac.uk/biostudies/arrayexpress/studies/E-MTAB-12531/sdrf) )
--   Clone this repo to your desired directory: `git clone git@github.com:ATA82/ATAC_Reprogrammin_of_Fibroblasts.git`
+-   Clone this repo to your desired directory: `git clone git@github.com:ATA82/ATAC_Reprogramming_of_Fibroblasts.git`
 -   Run the nf-core pipeline using the start_nfcore_atacseq.sh script on our raw data, using the fastq files downloaded in the previous step, the nf.conf file, and the samplesheet.csv file (these files could be found in the [here](https://github.com/ATA82/ATAC_Reprogramming_of_Fibroblasts/tree/main/basic_analysis))
     - The start_nfcore_atacseq.sh, the nf.conf file, the samplesheet file, and the raw data should be in the same folder.
     - If you want to use different folders you should adjust the code or the samplesheet file accordingly.
