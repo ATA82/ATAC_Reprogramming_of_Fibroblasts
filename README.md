@@ -75,7 +75,12 @@ If you do not have docker installed on your host system, install it first see: <
 
 -   Start your container with `docker compose up -d`, `-d` is for detach so the container will now run in the background and will even resume following a reboot. to stop session use `docker compose down`, add the `--build` flag when starting if you want to trigger a re-build of the container image.
 -   Connect to your RStudio server session at: localhost:port or 0.0.0.0:port, where port is the port you set in `docker-compose.yml`, in this example it is 4444 The default user and password are 'rstudio' & '1rstudio' respectively, these are set in `rstudio_docker/rstudio.env` note that you can connect to an RStudio server instance running on a remote system to which you have access over ssh by using ssh port forwarding. You can forward a port over ssh with a command of the form: `ssh -nNT -L <local port>:<host>:<remote port> <host>` e.g. `ssh -nNT -L 4444:abdallah.cecad.uni-koeln.de:4444 aabdallah@aabdallah.cecad.uni-koeln.de` you should now be able to access the RStudio server instance at localhost of the ssh client in a web browser. (Tip: If working with multiple RStudio containers we may sometimes have issues logging into different sessions at the same time opening different sessions using Firefox container tabs fixes this issue)
+-   Switch to the "project" directory using: setwd("project")
 -   Use `renv::restore()` to load the appropriate versions of the R package dependencies from the renv lockfile
+-   If your cache does not contain these dependencies, it will be installed via renv.
+-   After finishing the restore process, restart the R session.
+-   If you are notified about the synchronisation status of the project, run renv::status().
+-   You will be notified to run either renv::snapshot() or renv::restore() to get the project synchronized. The first one works.
 -   load the {targets} R package `library(targets)` and run the targets pipeline with `tar_make()`
 -   After all target objects are created you could switch to R Notebook within the project and Run all chunks.
 
