@@ -106,7 +106,8 @@ The **footprinting analysis** was performed using the footprinting tool from RGT
 9.  Liberzon A, Birger C, Thorvaldsdóttir H, Ghandi M, Mesirov JP, Tamayo P. The Molecular Signatures Database (MSigDB) hallmark gene set collection. Cell Syst. 2015 Dec 23;1(6):417-425. doi: 10.1016/j.cels.2015.12.004. PMID: 26771021; PMCID: PMC4707969.
 10. Kulakovskiy IV, Medvedeva YA, Schaefer U, Kasianov AS, Vorontsov IE, Bajic VB, Makeev VJ. HOCOMOCO: a comprehensive collection of human transcription factor binding sites models. Nucleic Acids Res. 2013 Jan;41(Database issue):D195-202. doi: 10.1093/nar/gks1089. Epub 2012 Nov 21. PMID: 23175603; PMCID: PMC3531053.
 11. Fornes O, Castro-Mondragon JA, Khan A, van der Lee R, Zhang X, Richmond PA, Modi BP, Correard S, Gheorghe M, Baranašić D, Santana-Garcia W, Tan G, Chèneby J, Ballester B, Parcy F, Sandelin A, Lenhard B, Wasserman WW, Mathelier A. JASPAR 2020: update of the open-access database of transcription factor binding profiles. Nucleic Acids Res. 2020 Jan 8;48(D1):D87-D92. doi: 10.1093/nar/gkz1001. PMID: 31701148; PMCID: PMC7145627.
-12. Zhijian Li, Marcel H. Schulz, Thomas Look, Matthias Begemann, Martin Zenke, Ivan G. Costa. Identification of transcription factor binding sites using ATAC-seq. Genome Biol 20, 45 (2019). <https://doi.org/10.1186/s13059-019-1642-2>
+12. Li Z, Schulz MH, Look T, Begemann M, Zenke M, Costa IG. Identification of transcription factor binding sites using ATAC-seq. Genome Biol. 2019 Feb 26;20(1):45. doi: 10.1186/s13059-019-1642-2. PMID: 30808370; PMCID: PMC6391789.
+
 
 ## Citation
 
