@@ -1,4 +1,4 @@
-# ATAC-Seq analysis related to the paper: "Lyn in fibroblasts promotes leukemia" (running title)
+# ATAC-Seq data analysis related to the paper: "Lyn in fibroblasts promotes leukemia" (running title)
 
 **Authors:**
 
