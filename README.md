@@ -133,7 +133,7 @@ your ssh client needs to have docker installed.
 - load the {targets} R package `library(targets)` and run the targets pipeline with `tar_make()`
 - After all target objects are created you could switch to R Notebook within the project and Run all chunks.
 
-Customisations can be made within the `_targets.R` file and the R functions files located in `R/`
+Customisations can be made within the `_targets.R` file and the R functions files located in `R/`. In case you have used our code and analysis to get some insights, I would likely to kindly ask for a citation of the related paper. The full citation is mentioned below.
 
 ## References
  1. Ewels PA, Peltzer A, Fillinger S, Patel H, Alneberg J, Wilm A, Garcia MU, Di Tommaso P, Nahnsen S. The nf-core framework for community-curated bioinformatics pipelines. Nat Biotechnol. 2020 Mar;38(3):276-278. doi: 10.1038/s41587-020-0439-x. PMID: 32055031.
