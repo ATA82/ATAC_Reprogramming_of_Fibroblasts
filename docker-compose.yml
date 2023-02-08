@@ -1,0 +1,24 @@
+version: '3.4'
+
+services:
+  template_rstudio: # swap 'template' for you project name (all lower case no specials other than _)
+    build:
+      context: ./rstudio_docker
+    container_name: template_rstudio  # swap 'template' for you project name (all lower case no specials other than _)
+    volumes:
+      # to have access to you host's git config include:
+      # - /home/${USERNAME}/.gitconfig:/home/rstudio/.gitconfig
+      # This allows you to use a global renv cache on your host system shared between your containers
+      - /opt/local/renv/cache:/home/rstudio/.cache/R
+      # To keep your Rstudio config customistaions from your host system include:
+      - ./rstudio_config_dir:/home/rstudio/.config/rstudio
+      ###!! THE PROJECT DATA DIRECTORY !!###
+      - /home/aabdallah/Desktop/Containers/Analyses/ATAC_Seq_Lyn_in_fibroblasts/ATAC_Seq_Lyn_in_fibrobalsts_template/ATAC_Reprogramming_of_Fibroblasts:/home/rstudio/project
+    restart:
+      unless-stopped
+    ports:
+      - 4444:8787 # 4415 is a randomly selected port number, I assign each project it's own so I can have
+                  # multiple running at once without them conflicting.
+    # The RStudio environment file sets the details of the RStudio user and information for renv
+    env_file: ./rstudio_docker/rstudio.env
+
