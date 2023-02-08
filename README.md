@@ -70,8 +70,12 @@ The **footprinting analysis** was performed using the footprinting tool from RGT
 If you do not have docker installed on your host system, install it first see: <https://docs.docker.com/get-docker/>, if you are going to remote into the host running the RStudio server instance in docker, only the remote host and not your ssh client needs to have docker installed.
 
 -   Download raw data (fastq files) from the above-mentioned repository ([E-MTAB-12531](https://www.ebi.ac.uk/biostudies/arrayexpress/studies/E-MTAB-12531/sdrf) )
--   Run the nf-core pipeline using the start\_ on our raw data (See accession number of our experiment above)
--   Clone this repo to your project directory: `git clone git@github.com:ATA82/ATAC_Reprogrammin_of_Fibroblasts.git`
+-   Clone this repo to your desired directory: `git clone git@github.com:ATA82/ATAC_Reprogrammin_of_Fibroblasts.git`
+-   Run the nf-core pipeline using the start_nfcore_atacseq.sh script on our raw data (See accession number of our experiment above)
+    - The start_nfcore_atacseq.sh, the nf.conf file, the samplesheet file, and the raw data should be in the same folder.
+    - If you want to use different folders you should adjust the code or the samplesheet file accordingly.
+    - There are comments within the start_nfcore_atacseq.sh script regarding the requirements.
+    - **This step is only needed if you want to start from scratch otherwise you could work with the results of the nf-core pipeline.**
 -   Create a file in this directory called `.env` which contains `USERNAME=<your username on your host system>`
 -   Customise the docker-compose.yml file to set the:
     -   project/container name - set this to a name for the project to make a new container for the project and to make it easier to identify your containers in e.g. `docker ps`
