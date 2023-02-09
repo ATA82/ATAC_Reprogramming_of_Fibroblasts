@@ -4,7 +4,7 @@
 # - license: GPLV2
 ####################################################################################################################################
 
-FROM rocker/rstudio:4.1.2
+FROM rocker/rstudio:4.1.3
 
 ENV S6_VERSION=v1.21.7.0
 ENV RSTUDIO_VERSION=latest
