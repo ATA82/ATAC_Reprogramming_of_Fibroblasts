@@ -249,8 +249,6 @@ correlation_plot <- function(DAA, DEA, DAA.name="ATAC-Seq", DEA.name="Transcript
   
   linetype= "dashed"
   
-  merge(combined, tar_read(PDEA), by="Symbol")
-  
   ## Main plot
   if(include.symbols){
     p <- ggplot(combined, aes(x=first.log2FoldChange, y=second.log2FoldChange, fill=Relation, label=Symbol)) + 
