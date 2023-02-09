@@ -13,7 +13,7 @@ services:
       # To keep your Rstudio config customistaions from your host system include:
       - ./rstudio_config_dir:/home/rstudio/.config/rstudio
       ###!! THE PROJECT DATA DIRECTORY !!###
-      - /home/aabdallah/Desktop/Containers/Analyses/ATAC_Seq_Lyn_in_fibroblasts/ATAC_Seq_Lyn_in_fibrobalsts_template/ATAC_Reprogramming_of_Fibroblasts:/home/rstudio/project
+      - /home/aabdallah/Desktop/RProjects/ATAC_Reprogramming_of_Fibroblasts_REPRO:/home/rstudio/project
     restart:
       unless-stopped
     ports:
