@@ -3,11 +3,9 @@
 ## Peaks
 distance.to.tss <- Inf  
 db.query.pattern <- c("EnsDb", "sapiens", "104")
-mount.point <- "~/Desktop/CHEOPS"
-server.dir <- ""
-project.dir <- "AG_Hallek/xxxxxx_vomstein_atacseq/results/bwa/mergedLibrary/macs/narrowPeak/consensus/"
+project.dir <- paste(getwd(),"/data/consensus/",sep="")
 peaks.file.name <-  "consensus_peaks.mLb.clN.boolean.annotatePeaks.txt"
-peaks.dir <- paste(mount.point, "/", server.dir, "/", project.dir, sep="")
+peaks.dir <- paste(project.dir, sep="")
 peaks.file.path <- paste(peaks.dir, "/", peaks.file.name, sep="")
 
 ## Counts
@@ -22,7 +20,7 @@ names(vp.point.colors) <- c("sel", "nonsign", "lownegsign", "highnegsign", "lowp
 vp.selected.genes <- c("THBS1", "JUN", "FOS", "STAT1", "NFKB1")
 
 ### Other OMICS
-transcriptomics_dea <- "results/transcriptomics/transcriptomics.csv"
+transcriptomics_dea <- "data/transcriptomics/transcriptomics.csv"
 proteomics_dea <- "results/proteomics/proteomics.csv"
 
 ### pdf plots
