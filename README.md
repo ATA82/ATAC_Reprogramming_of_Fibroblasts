@@ -116,4 +116,4 @@ The **footprinting analysis** was performed using the footprinting tool from RGT
 
 ## Citation
 
-Vom Stein AF, Rebollido-Rios R, Lukas A, Koch M, von Lom A, Reinartz S, Bachurski D, Rose F, Bozek K, Abdallah AT, Kohlhas V, Saggau J, Zölzer R, Zhao Y, Bruns C, Bröckelmann PJ, Lohneis P, Büttner R, Häupl B, Oellerich T, Nguyen PH, Hallek M. LYN kinase programs stromal fibroblasts to facilitate leukemic survival via regulation of c-JUN and THBS1. Nat Commun. 2023 Mar 10;14(1):1330. doi: 10.1038/s41467-023-36824-2. PMID: 36899005.
+Vom Stein AF, Rebollido-Rios R, Lukas A, Koch M, von Lom A, Reinartz S, Bachurski D, Rose F, Bozek K, **Abdallah AT**, Kohlhas V, Saggau J, Zölzer R, Zhao Y, Bruns C, Bröckelmann PJ, Lohneis P, Büttner R, Häupl B, Oellerich T, Nguyen PH, Hallek M. LYN kinase programs stromal fibroblasts to facilitate leukemic survival via regulation of c-JUN and THBS1. Nat Commun. 2023 Mar 10;14(1):1330. doi: 10.1038/s41467-023-36824-2. PMID: 36899005.
